@@ -1,0 +1,61 @@
+version: '3.5'
+services:
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    env_file: .env
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - project
+
+  # php:
+    # container_name: php
+    # image: php:7.4-fpm
+
+  nginx:
+    container_name: nginx
+
+    # image: nginx:latest
+    build: ./requirements/nginx
+    hostname: localhost
+    # ogarthar.42.fr
+    volumes:
+      - wp:/var/html/wordpress
+    networks:
+      - project
+    # depends_on:
+    #   - wordpress
+    ports:
+      - "443:443"
+      - "80:80"
+
+volumes:
+  db:
+    name: db
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/db
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/wp
+
+networks:
+  project:
+    driver: bridge
+# Создаваемая пользователем мостовая система project позволяет 
+# организовать коммуникацию между нашими контейнерами,
+# поскольку они находятся на одном хосте демона Docker.
+# Это позволяет организовать трафик и коммуникации внутри 
+# приложения, поскольку она открывает все порты между контейнерами 
+# в одной мостовой сети, скрывая все порты от внешнего мира. 
+# Таким образом, наши контейнеры mariadb, wordpress и nginx могут 
+# взаимодействовать друг с другом, и нам нужно будет только 
+# открыть порт 440 для внешнего доступа к приложению
