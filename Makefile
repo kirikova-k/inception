@@ -2,6 +2,9 @@ all:	up
 up:
 		@mkdir -p /home/${USER}/data/db
 		@mkdir -p /home/${USER}/data/wp
+
+		@docker-compose -f src/docker-compose.yml build
+
 		@docker-compose -f src/docker-compose.yml up -d
 
 down:
@@ -12,9 +15,9 @@ ps:
 		docker ps -a
 
 fclean: down
-		docker rmi -f $$(docker images -qa);\
-		docker volume rm $$(docker volume ls -q);\
-		docker system prune -a --force
+		# docker rmi -f $$(docker images -qa);\
+		# docker volume rm $$(docker volume ls -q);\
+		# docker system prune -a --force
 		sudo rm -Rf /home/${USER}/data/db
 		sudo rm -Rf /home/${USER}/data/wp
 		mkdir /home/${USER}/data/db
@@ -30,5 +33,8 @@ mariadb:
 		docker exec -it mariadb bash
 nginx:
 		docker exec -it nginx bash
+
+wordpress:
+		docker exec -it wordpress bash
 
 .PHONY: all up down ps fclean re 

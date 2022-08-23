@@ -3,12 +3,29 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
+    hostname: localhost_mariadb
     restart: always
     env_file: .env
     volumes:
       - db:/var/lib/mysql
     networks:
       - project
+    ports:
+      - "3306:3306"
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    hostname: localhost_wordpress
+    env_file: .env
+    volumes:
+      - wp:/var/www/html/wordpress
+    networks:
+      - project
+    depends_on:
+      - mariadb
+    ports:
+      - "9000:9000"
 
   # php:
     # container_name: php
@@ -19,17 +36,15 @@ services:
 
     # image: nginx:latest
     build: ./requirements/nginx
-    hostname: localhost
-    # ogarthar.42.fr
+    hostname: localhost_nginx
     volumes:
-      - wp:/var/html/wordpress
+      - wp:/var/www/html/wordpress
     networks:
       - project
-    # depends_on:
-    #   - wordpress
+    depends_on:
+      - wordpress
     ports:
       - "443:443"
-      - "80:80"
 
 volumes:
   db:
