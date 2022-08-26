@@ -21,3 +21,4 @@ is excluded!). For example, a showcase site or a site for presenting your resume
 • Set up Adminer.
 • Set up a service of your choice that you think is useful. During the defense, you
 will have to justify your choice. (In my "Inception" it is Portainer)
+![photo1661533395](https://user-images.githubusercontent.com/78385823/186958177-bbeb76a1-4b8a-4919-ac34-09e705015207.jpeg)
