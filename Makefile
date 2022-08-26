@@ -37,4 +37,9 @@ nginx:
 wordpress:
 		docker exec -it wordpress bash
 
+redis:
+		docker exec -it redis bash
+ftp:
+		docker exec -it ftp_server bash
+
 .PHONY: all up down ps fclean re 

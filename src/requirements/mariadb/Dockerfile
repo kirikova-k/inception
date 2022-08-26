@@ -12,9 +12,3 @@ RUN service mysql start && mysql < /var/www/createdb.sql && rm -f /var/www/creat
 RUN apt install -y procps
 
 ENTRYPOINT /usr/bin/mysqld_safe
-
-
-# описывает команду с аргументами, которую нужно выполнить когда контейнер будет запущен
-# CMD /usr/bin/mysqld_safe
-
-# ps -ef
