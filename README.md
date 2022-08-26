@@ -9,6 +9,9 @@ configured) only without nginx.
 • The second volume containing your WordPress website files.
 • The Docker network, which establishes a connection between your containers.
 
+<img width="599" alt="Screen Shot 2022-08-26 at 20 06 45" src="https://user-images.githubusercontent.com/78385823/186957963-d849603c-5667-4eb6-8a79-64679a09705c.png">
+
+
 Bonus part(done):
 • Set up redis cache for your WordPress website in order to properly manage the
 cache.
