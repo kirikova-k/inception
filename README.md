@@ -4,7 +4,7 @@
 This project aims to broaden your knowledge of system administration by using Docker and Docker-compose.
 
 Mandatory part(done):
-• Docker container containing NGINX with TLSv1.2 or TLSv1.3 only.
+• Docker container containing NGINX with TLSv1.2 or TLSv1.3 only.\n
 • Docker container containing WordPress + php-fpm (it must be installed and
 configured) only without nginx.
 • Docker container containing only MariaDB without nginx.
