@@ -5,7 +5,7 @@ FROM alpine:latest
 ENV PORTAINER_VERSION=2.14.2 \
     PORTAINER_HOME=/var/lib/portainer
 
-LABEL maintainer="tolmvad@gmail.com" \
+LABEL maintainer="kirickova.k1993@gmail.com" \
       org.label-schema.build-date="25.08.2022" \
       org.label-schema.name="inception portainer" \
       org.label-schema.description="inception portainer image" \
